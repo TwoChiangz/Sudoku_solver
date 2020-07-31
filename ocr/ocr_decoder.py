@@ -33,7 +33,7 @@ def predict_mask(detector_model, img):
 
 def predict_char_class(recognizer_model, img, all_chars):
     list_bboxes = []
-
+    # find all regions and resize box
     for char in all_chars:
         minr, minc, maxr, maxc = char["minr"], char["minc"], char["maxr"], char["maxc"]
         size = max(maxr - minr, maxc - minc)
@@ -113,10 +113,10 @@ def img_to_grid(
 
     if plot_path is not None:
 
-        fig, ax = plt.subplots(figsize=(15, 15))
+        _, ax = plt.subplots(figsize=(15, 15))
         plt.axis("off")
 
-        ax.imshow(img, cmap=plt.cm.gray)
+        ax.imshow(img, cmap=plt.gray())
 
         for char in all_chars:
             minr, minc, maxr, maxc = (

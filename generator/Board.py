@@ -45,7 +45,7 @@ class Board:
                 self.columns[col].append(cell)
                 self.boxes[box].append(cell)
                 self.cells.append(cell)
-'''
+
     # returning cells in puzzle that are not set to zero
     def get_used_cells(self):
         return [x for x in self.cells if x.value != 0]
@@ -185,4 +185,3 @@ class Board:
             solved = solved and len(set(v)) == 9
 
         return solved
-'''
