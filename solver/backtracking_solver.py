@@ -6,7 +6,7 @@ from solver.utils import backtracking_solve
 from ocr.ocr_decoder import img_to_grid
 from ocr.ocr_detector import get_detector
 from ocr.ocr_recognizer import get_recognizer
-import cv2
+
 import time
 
 if __name__ == "__main__":
@@ -17,7 +17,7 @@ if __name__ == "__main__":
     recognizer_model_h5 = "ocr_recognizer.h5"
     recognizer_model = get_recognizer()
     recognizer_model.load_weights(recognizer_model_h5)
-
+    import cv2
     img = cv2.imread("samples/wiki_sudoku.png")
 
     grid = img_to_grid(

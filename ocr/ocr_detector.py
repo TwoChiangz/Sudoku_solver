@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-import imgaug.augmenters as iaa
+
 import numpy as np
 from tensorflow.keras import losses
 from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau
@@ -104,6 +104,7 @@ def get_detector():
 
 
 def get_seq():
+    import imgaug.augmenters as iaa
     sometimes = lambda aug: iaa.Sometimes(0.1, aug)
     seq = iaa.Sequential(
         [
@@ -176,7 +177,6 @@ def train_detector():
         monitor="val_acc", mode="max", patience=20, verbose=1, min_lr=1e-7
     )
     callbacks_list = [checkpoint, early, redonplat]
-
     history = model.fit_generator(
         gen(),
         epochs=100,

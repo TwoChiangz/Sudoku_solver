@@ -1,4 +1,4 @@
-import cv2
+
 import matplotlib.pyplot as plt
 import numpy as np
 from skimage import measure
@@ -32,6 +32,7 @@ def predict_mask(detector_model, img):
 
 
 def predict_char_class(recognizer_model, img, all_chars):
+    import cv2
     list_bboxes = []
     # find all regions and resize box
     for char in all_chars:
@@ -103,6 +104,7 @@ def infer_rows_and_cols(chars):
 def img_to_grid(
     img, detector_model, recognizer_model, plot_path=None, print_result=False
 ):
+    import cv2
     img = cv2.resize(img, (256, 256))
 
     show_mask = predict_mask(detector_model, img)
@@ -151,7 +153,7 @@ if __name__ == "__main__":
     recognizer_model_h5 = "ocr_recognizer.h5"
     recognizer_model = get_recognizer()
     recognizer_model.load_weights(recognizer_model_h5)
-
+    import cv2
     img = cv2.imread("example6.png")
 
     img_to_grid(

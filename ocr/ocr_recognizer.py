@@ -1,6 +1,6 @@
 from pathlib import Path
 
-import imgaug.augmenters as iaa
+
 import numpy as np
 from tensorflow.keras import losses
 from tensorflow.keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau
@@ -45,6 +45,7 @@ def get_recognizer():
 
 
 def get_seq():
+    import imgaug.augmenters as iaa
     sometimes = lambda aug: iaa.Sometimes(0.1, aug)
     seq = iaa.Sequential(
         [
